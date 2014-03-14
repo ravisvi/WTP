@@ -1,0 +1,30 @@
+
+How to implement it:
+
+Word falls down. 
+Dictionary of words 
+Currently falling down   :    The ones which are currently falling down.  (Only these words are associated with scoring.)
+These words are used to see whether he has typed/ he is typing.
+Not falling down            :     The ones yet to fall down.
+These words are in contention for selection.
+successfully typed        :      Already typed successfully.
+Successfully typed are not repeated in that game/ session.
+A function to choose a word from dictionary. And change the value associated with it to : CFD
+A function to take the word from function1b, handles the display of the word. 
+Listener associated with a function takes care of scoring:
+You need to start with the first alphabet of any word in CFD
+No mistakes.  (mistakes) = reset
+Once typed call function1e
+function1e:
+Destroys the word in some spectacular fashion.
+Pause the play: Show a word and it’s meaning:  (10 words)
+Ask for the meaning/ synonym at the end of the game.
+
+
+
+Backburner items:
+
+Combo
+Bonus word. Big word: if he can type it out 200 points. :P
+Get word right on the first try.
+Levels. Vary the speed.
