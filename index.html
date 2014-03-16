@@ -6,6 +6,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
 		<script type="text/javascript" src="js/core.js"></script>
+		<script type="text/javascript">
+			function disable() {
+				document.getElementById("start").style.visibility = "hidden";
+			}
+		</script>
 		<title>WTP</title>
 	</head>
 	<body>
@@ -15,6 +20,6 @@
 		<canvas id="gameCanvas"></canvas>
 		<script type="text/javascript">initCanvas()</script>
 		<br />
-		<input type="button" onclick="startWords('gameCanvas');" value="Start"/>
+		<input type="button" onclick="startWords('gameCanvas'); disable();" value="Start" id="start"/>
 	</body>
 </html>

@@ -10,20 +10,23 @@ function initCanvas() {
 	canvas.height = canvasHeight;
 }
 
-function startWords(canvasId) {
+function startWords() {
+	setInterval("startWord(); context.clearRect(0, 0, canvasWidth, canvasHeight);", 100);
+}
+
+function startWord() {
 	context.font = "175% Helvetica";
 	var thisWord = getWord();
-	var thisX = Math.random() * canvasWidth;
+	var thisX = canvasWidth/15 + ((Math.random() * canvasWidth) * 0.8);
 	var thisY = 0;
 	var t = setInterval(function() {
 		context.fillText(thisWord, thisX, thisY);
-		context.clearRect(0, 0, canvasWidth, canvasHeight);
 		thisY += 10;
-		context.fillText(thisWord, thisX, thisY);
 	}, 100);
+
 }
 
 function getWord() {
-	var dummyWords = new Array("this", "is", "sparta", "hello", "world", "joker");
-	return dummyWords[Math.floor(Math.random() * 5)];
+	var dummyWords = new Array("this", "is", "sparta", "hello", "world", "joker", "narendra", "ravi", "wtp", "kickass", "jolly", "madam", "it seems", "muhaha", "weka", "");
+	return dummyWords[Math.floor(Math.random() * 15)];
 }
