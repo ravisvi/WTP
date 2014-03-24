@@ -6,8 +6,14 @@ var t1 = 0;
 
 function initCanvas() {
 	canvas = new createjs.Stage("gameCanvas");
-	document.getElementById("gameCanvas").width = canvasWidth;
-	document.getElementById("gameCanvas").height = canvasHeight;
+	var c = document.getElementById("gameCanvas");
+	c.width = canvasWidth;
+	c.height = canvasHeight;
+	window.addEventListener("keydown", function() {
+		console.log("typed " + String.fromCharCode(event.keyCode));
+	}, true);
+	console.log("set event");
+	//startWords();
 }
 
 function startWords() {
@@ -22,7 +28,7 @@ function startWords() {
 			speed += 6;
 		}
 		;
-		console.log(speed);
+		//console.log(speed);
 		//clearInterval(t1);
 	}, 2000);
 }
