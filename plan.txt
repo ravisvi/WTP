@@ -22,6 +22,11 @@ How to implement it:
     Ask for the meaning/ synonym at the end of the game.
 
 
+Game modes:
+	1. Arcade : Where you miss three words. Increase speed depending on 
+	the score.
+	2. Zen	  : Limited time. Increase speed depending on the time.
+	3. Multiplayer : Basically zen on different comps.
 
 Backburner items:
 
