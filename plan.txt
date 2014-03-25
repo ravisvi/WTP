@@ -28,6 +28,8 @@ Game modes:
 	2. Zen	  : Limited time. Increase speed depending on the time.
 	3. Multiplayer : Basically zen on different comps.
 
+<i>Have profile for each player, he can see the progress by checking a graph. </i>
+
 Backburner items:
 
 Combo

@@ -42,8 +42,3 @@ function startWord() {
 	}, speed);
 }
 
-/*
- function getWord() {
- var dummyWords = new Array("this", "is", "sparta", "hello", "world", "joker", "narendra", "ravi", "wtp", "kickass", "jolly", "madam", "it seems", "muhaha", "weka", "");
- return dummyWords[Math.floor(Math.random() * 15)];
- }*/
