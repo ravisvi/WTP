@@ -1,3 +1,5 @@
+var score = 0;
+
 var not_used = ['abate', 'aberrant', 'abeyance', 'abscond', 'abstemious', 'admonish', 'adulterate',
 'aesthetic', 'aggregate', 'alacrity', 'alleviate', 'amalgamate', 'ambiguous', 'ambivalence', 'ameliorate', 
 'anachronism', 'analogous', 'anarchy', 'anomalous', 'antipathy', 'apathy', 'appease', 'apprise', 
@@ -62,6 +64,7 @@ function success_typed(word){
 		cur_in_use.splice(index, 1);	
 	}
 	else(console.log("Error in moving succ_typed word to succ_typed."));	
+	score+=1;
 }
 
 function not_succ_typed(word){
@@ -71,6 +74,10 @@ function not_succ_typed(word){
 		cur_in_use.splice(index, 1);	
 	}
 	else(console.log("Error in moving unsucc_typed word to not_used."));
+}
+
+function reset_score(){
+	score = 0;
 }
 
 //TESTING BLOCK{
