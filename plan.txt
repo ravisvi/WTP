@@ -36,3 +36,13 @@ Combo
 Bonus word. Big word: if he can type it out 200 points. :P
 Get word right on the first try.
 Levels. Vary the speed.
+
+
+Multiplayer :
+
+	1. Assign an ID to a player when he opens index.html
+	2. Add him to ol players pool.
+	3. Start at the same time.
+	4. when zen is done compare the scores and give results.
+
+Maintain scores via PHP. -Ravi
