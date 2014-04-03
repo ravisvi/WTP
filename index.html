@@ -1,27 +1,75 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<link rel="stylesheet" href="css/layout.css"/>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		
-		<script type="text/javascript" src="js/core.js"></script>
-		<script type="text/javascript" src="js/snd.js"></script>
-		<script type="text/javascript" src="lib/easeljs-0.7.1.min.js"></script>
-		<script type="text/javascript">
-			function disable() {
-				document.getElementById("start").style.visibility = "hidden";
-			}
-		</script>
-		<title>WTP</title>
-	</head>
-	<body>
-		<p class="heading">
-			WTP (<a class="underline">W</a>TP <a class="underline">T</a>yping <a class="underline">P</a>arty)
-		</p>
-		<canvas id="gameCanvas"></canvas>
-		<script type="text/javascript">initCanvas()</script>
-		<br />
-		<input type="button" onclick="startWords('gameCanvas'); disable();" value="Start" id="start"/>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fun game to improve vocabulary and typing speed.">
+    <meta name="author" content="Narendra. Ravi.">
+    <!--<link rel="shortcut icon" href="../../assets/ico/favicon.png">-->
+
+    <title>WTP for Typing Party</title>
+
+    <link href="lib/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/layout.css"/>
+    <link href="lib/jumbotron-narrow.css" rel="stylesheet">
+    <script type="text/javascript" src="js/core.js"></script>
+    <script type="text/javascript" src="js/snd.js"></script>
+    <script type="text/javascript" src="lib/easeljs-0.7.1.min.js"></script>
+    <script type="text/javascript">
+      function disable() {
+        document.getElementById("start").style.visibility = "hidden";
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">WTP for Typing Party</h3>
+      </div>
+
+      <div class="jumbotron">
+        <canvas id="gameCanvas"></canvas>
+        <script type="text/javascript">initCanvas()</script>
+        <br />
+        <button class="btn btn-success" onclick="startWords('gameCanvas'); disable();" >&nbsp;&nbsp;&nbsp;Start&nbsp;&nbsp;&nbsp; </button>
+      </div>
+      <hr />
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>What?</h4>
+          <p>This is a simple game built using html5 and js for a college Web Tech Project. This helps to improve your vocabulary and improve typing speed.</p>
+
+          <h4>Why?</h4>
+          <p>To build a fun platform to learn the most common GRE words, which is available across all platforms as it's on a browser. </p>
+
+          <h4>How?</h4>
+          <p>There are <b>supposed</b> to be three modes. Arcade, Zen and multiplayer. To understand how each mode helps to improve your speed, <a href="about.html">click here</a> !</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>For whom?</h4>
+          <p>Anyone preparing for GRE, TOEFL, etc. Or anyone who wants to improve their typing speed. Or to kill your time productively.</p>
+
+          <h4>About us</h4>
+          <p>We are a team of two programmers who love Cricket, Anime, Games and FOOD. Get to know more <a href="contact.html">about us</a>. </p>
+
+          <h4>Feedback</h4>
+          <p>This project is a 'just for fun' creation, if you have any feedback to provide please do so, by dropping a mail to <a style="color:green; text-decoration:none;">ravitejasvi@gmail.com</a> or <a style="color:#3b79d6; text-decoration:none;">narendranathjoshi@gmail.com<a>.</p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>&copy; WTP 2014</p>
+      </div>
+
+    </div> <!-- /container -->
+  </body>
 </html>
