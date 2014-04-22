@@ -75,14 +75,85 @@ function startWord() {
 
 /* version 2 */
 
-function start() {
+function startMany() {
 	window.addEventListener("keydown", function() {
 		handleType();
 	}, true);
 
+	var score = 0;
+	var mistake = 0;
 	var cur_list;
 	var readonly_cur_list;
 	var t;
+	var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Rage Italic", "Times New Roman", "Futura");
+
+	init();
+
+	function init() {
+		t = setInterval(function() {
+			document.getElementById("timerval").innerHTML = parseInt(document.getElementById("timerval").innerHTML) + 1;
+		}, 1000);
+
+		cur_list = new Array();
+		readonly_cur_list = new Array();
+
+		for (var i = 0; i < Math.ceil(Math.random() * 6) + 2; i++) {
+			var thisWord = select_word();
+			cur_list[i] = thisWord;
+			readonly_cur_list[i] = thisWord;
+			document.getElementById("game").innerHTML += "<p id='" + thisWord + "' style='position: absolute; font-family: " + fonts[Math.floor(Math.random() * 8)] + ";font-size: " + (Math.random() * 75 + 100) + "% ;top: " + (10 + (Math.random() * 80)) + "%; left: " + (10 + (Math.random() * 80)) + "%;'>" + thisWord + "</p>";
+		};
+	}
+
+	function handleType() {
+		var letter = String.fromCharCode(event.keyCode + 32);
+		var mistakeFlag = false;
+		for (var i = 0; i < cur_list.length; i++) {
+			if (letter == cur_list[i].charAt(0)) {
+				cur_list[i] = cur_list[i].substr(1);
+				document.getElementById(readonly_cur_list[i]).innerHTML = cur_list[i];
+				mistakeFlag = true;
+			}
+		};
+		if (mistakeFlag == false) {
+			mistake += 1;
+			console.log("mistake");
+		}
+
+		var complete = true;
+		for (var i = 0; i < cur_list.length; i++) {
+			if (cur_list[i].length != 0) {
+				complete = false;
+			} else {
+				score += 1;
+			}
+		}
+
+		if (complete) {
+			clearInterval(t);
+			document.getElementById("score").innerHTML = "Score : " + score;
+			init();
+		}
+
+		if (mistake >= 5) {
+			clearInterval(t);
+			document.getElementById("score").innerHTML = "Game Over. Score : " + score;
+			document.getElementById("game").innerHTML = "";
+		}
+	}
+
+}
+
+function startOne() {
+	window.addEventListener("keydown", function() {
+		handleType();
+	}, true);
+
+	var score = 0;
+	var mistake = 0;
+	var readonly_cur_word;
+	var t;
+	var thisWord;
 	var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Rage Italic", "Times New Roman", "Futura");
 
 	function init() {
@@ -90,6 +161,63 @@ function start() {
 			document.getElementById("timerval").innerHTML = parseInt(document.getElementById("timerval").innerHTML) + 1;
 		}, 1000);
 
+		thisWord = select_word();
+		readonly_cur_word = thisWord;
+		document.getElementById("game").innerHTML += "<p id='" + thisWord + "' style='position: absolute; font-family: " + fonts[Math.floor(Math.random() * 8)] + ";font-size: " + (Math.random() * 75 + 100) + "% ;top: " + (10 + (Math.random() * 80)) + "%; left: " + (10 + (Math.random() * 80)) + "%;'>" + thisWord + "</p>";
+	};
+
+	init();
+
+	function handleType() {
+		var letter = String.fromCharCode(event.keyCode + 32);
+		if (letter == thisWord.charAt(0)) {
+			thisWord = thisWord.substr(1);
+			document.getElementById(readonly_cur_word).innerHTML = thisWord;
+		} else {
+			mistake += 1;
+			console.log("mistake");
+		}
+
+		var complete = true;
+		if (thisWord.length != 0) {
+			complete = false;
+		} else {
+			score += 1;
+		}
+
+		if (complete) {
+			clearInterval(t);
+			document.getElementById("score").innerHTML = "Score : " + score;
+			init();
+		}
+
+		if (mistake >= 5) {
+			clearInterval(t);
+			document.getElementById("score").innerHTML = "Game Over. Score : " + score;
+			document.getElementById("game").innerHTML = "";
+		}
+	}
+
+}
+
+function startTimed() {
+	var flag = false;
+	window.addEventListener("keydown", function() {
+		handleType();
+	}, true);
+
+	var cur_list;
+	var readonly_cur_list;
+	var t;
+	var score = 0;
+	var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Rage Italic", "Times New Roman", "Futura");
+
+	document.getElementById("timerval").innerHTML = 10;
+	t = setInterval(function() {
+		document.getElementById("timerval").innerHTML = parseInt(document.getElementById("timerval").innerHTML) - 1;
+	}, 1000);
+
+	function init() {
 		cur_list = new Array();
 		readonly_cur_list = new Array();
 
@@ -114,13 +242,22 @@ function start() {
 		for (var i = 0; i < cur_list.length; i++) {
 			if (cur_list[i].length != 0) {
 				complete = false;
+			} else {
+				score += 1;
 			}
 		}
 
 		if (complete) {
-			clearInterval(t);
-			document.getElementById("score").innerHTML = "Score : " + document.getElementById("timerval").innerHTML;
 			init();
+		}
+
+		if (parseInt(document.getElementById("timerval").innerHTML) <= 0) {
+			clearInterval(t);
+			if (flag == false) {
+				document.getElementById("score").innerHTML = "Score : " + score;
+				document.getElementById("game").innerHTML = "";
+				flag = true;
+			}
 		}
 	}
 

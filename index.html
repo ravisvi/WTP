@@ -16,8 +16,11 @@
 		<script type="text/javascript" src="js/snd.js"></script>
 		<script type="text/javascript" src="lib/easeljs-0.7.1.min.js"></script>
 		<script type="text/javascript">
-			function disable() {
+			function toggle() {
 				document.getElementById("start").style.visibility = "hidden";
+				document.getElementById("modeOne").style.visibility = "visible";
+				document.getElementById("modeMany").style.visibility = "visible";
+				document.getElementById("modeTimed").style.visibility = "visible";
 			}
 		</script>
 	</head>
@@ -41,21 +44,18 @@
 			</div>
 
 			<div class="jumbotron">
-				<script type="text/javascript">
-					initCanvas();
-				</script>
 				<br />
 				<button id="start" class="btn btn-success" onclick="toggle();" >
 					&nbsp;&nbsp;&nbsp;Start&nbsp;&nbsp;&nbsp;
 				</button>
-				<button id="modeOne" class="btn btn-success" onclick="startOne();" >
-					&nbsp;&nbsp;&nbsp;Start&nbsp;&nbsp;&nbsp;
+				<button id="modeOne" class="btn btn-success" onclick="location.href = 'one.html';" style="visibility: hidden;">
+					&nbsp;&nbsp;&nbsp;Zen&nbsp;&nbsp;&nbsp;
 				</button>
-				<button id="modeMany" class="btn btn-success" onclick="startMany();" >
-					&nbsp;&nbsp;&nbsp;Start&nbsp;&nbsp;&nbsp;
+				<button id="modeMany" class="btn btn-success" onclick="location.href = 'many.html';" style="visibility: hidden;">
+					&nbsp;&nbsp;&nbsp;Assassin&nbsp;&nbsp;&nbsp;
 				</button>
-				<button id="modeTimed" class="btn btn-success" onclick="startTimed();" >
-					&nbsp;&nbsp;&nbsp;Start&nbsp;&nbsp;&nbsp;
+				<button id="modeTimed" class="btn btn-success" onclick="location.href = 'timed.html';" style="visibility: hidden;">
+					&nbsp;&nbsp;&nbsp;Ninja&nbsp;&nbsp;&nbsp;
 				</button>
 				<p id="timer">
 					Timer : <a id="timerval">0</a>
@@ -97,7 +97,7 @@
 
 					<h4>Feedback</h4>
 					<p>
-						This project is a 'just for fun' creation, if you have any feedback to provide please do so, by dropping a mail to <a style="color:green; text-decoration:none;">ravitejasvi@gmail.com</a> or <a style="color:#3b79d6; text-decoration:none;">narendranathjoshi@gmail.com<a>.
+						This project is a 'just for fun' creation, if you have any feedback to provide please do so, by dropping a mail to <a style="color:green; text-decoration:none;">ravitejasvi@gmail.com</a> or <a style="color: #3b79d6; text-decoration: none;">narendranathjoshi@gmail.com</a>.
 					</p>
 				</div>
 			</div>
