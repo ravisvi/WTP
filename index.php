@@ -84,7 +84,7 @@
 					&nbsp;&nbsp;&nbsp;Start&nbsp;&nbsp;&nbsp;
 				</button>
 				<br />
-				<button id="modeOne" class="btn btn-info" onclick="location.href = 'many.html';" style="visibility: hidden;">
+				<button id="modeOne" class="btn btn-info" onclick="location.href = 'one.html';" style="visibility: hidden;">
 					&nbsp;&nbsp;&nbsp;Zen&nbsp;&nbsp;&nbsp;
 				</button>
 				<button id="modeMany" class="btn btn-info" onclick="location.href = 'many.html';" style="visibility: hidden;">
