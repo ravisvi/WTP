@@ -1,22 +1,17 @@
 <?php 
- $name = $_GET['Name']; 
- $score = $_GET['Score'];
- $date = $_GET['Date_'];
- $game_type = $_GET['Game_Type']; 
+ $name = $_GET['name']; 
+ $score = $_GET['scoref'];
+ $date = $_GET['date'];
+ $game_type = $_GET['game_type']; 
  
- 	$link = @mysql_connect("localhost", "root", ""); 
- 	if (mysql_errno()){ 
+ 	$link = mysqli_connect("localhost", "root", '', "highscore"); 
+ 	if (mysqli_errno($link)){ 
  		exit("-2"); 
- 	} 
- 	mysql_select_db('wtp', $link); 
- 	if (mysql_errno()){ 
- 		exit("-3"); 
- 	} 
- 	$sql = "INSERT INTO highscores(Name, Score, Date_, Game_Type) VALUES('$name', $score, '$date', '$game_type')"; 
- 	$result = mysql_query($sql, $link); 
- 	if (mysql_errno()){ 
- 		exit("-4"); 
  	}
+	
+ 	$sql = "INSERT INTO scores (name, score, date_, game_type) VALUES('$name', $score, '$date', '$game_type')"; 
+ 	$result = mysqli_query($link, $sql);
 
- exit("1"); 
+	echo "<html><script type='text/javascript' src='../js/bootstrap.css'></script><div class='row marketing'><div class='col-lg-6'><h4>Nice Game!</h4><p>Score submitted, <a href='\WTP\index.php'>View them here or Play Again!</a></p></html>
+					"
 ?> 

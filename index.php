@@ -13,8 +13,9 @@
 		<link rel="stylesheet" href="css/layout.css"/>
 		<link href="lib/jumbotron-narrow.css" rel="stylesheet">
 		<script type="text/javascript" src="js/core.js"></script>
+		<script type="text/javascript" src="lib/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/bootstrap.js"></script>
 		<script type="text/javascript" src="js/snd.js"></script>
-		<script type="text/javascript" src="lib/easeljs-0.7.1.min.js"></script>
 		<script type="text/javascript">
 			function toggle() {
 				document.getElementById("start").style.visibility = "hidden";
@@ -22,11 +23,46 @@
 				document.getElementById("modeMany").style.visibility = "visible";
 				document.getElementById("modeTimed").style.visibility = "visible";
 			}
+
+			function openModal(mode) {
+				//alert(mode);
+				$('#myModal').on('show', function() {
+					$('iframe').attr("src", mode);
+					alert("changed");
+				});
+				$('#myModal').modal({
+					show : true
+				})
+			}
 		</script>
 	</head>
 
 	<body>
 
+		<div id="myModal" class="modal hide fade" tabindex="-1">
+			<div class='modal-dialog' style="width: 90%;">
+				<div class='modal-content'>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							Close ×
+						</button>
+						<h3>Dialog</h3>
+					</div>
+					<div class="modal-body">
+						<p>
+							This is Modal!
+						</p>
+						<hr />
+						<iframe frameborder="0" src=""></iframe>
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal">
+							OK
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="container" style="width: 80%;">
 			<div class="header">
 				<ul class="nav nav-pills pull-right">
@@ -48,13 +84,13 @@
 					&nbsp;&nbsp;&nbsp;Start&nbsp;&nbsp;&nbsp;
 				</button>
 				<br />
-				<button id="modeOne" class="btn btn-success" onclick="location.href = 'one.html';" style="visibility: hidden;">
+				<button id="modeOne" class="btn btn-info" onclick="location.href = 'many.html';" style="visibility: hidden;">
 					&nbsp;&nbsp;&nbsp;Zen&nbsp;&nbsp;&nbsp;
 				</button>
-				<button id="modeMany" class="btn btn-success" onclick="location.href = 'many.html';" style="visibility: hidden;">
+				<button id="modeMany" class="btn btn-info" onclick="location.href = 'many.html';" style="visibility: hidden;">
 					&nbsp;&nbsp;&nbsp;Assassin&nbsp;&nbsp;&nbsp;
 				</button>
-				<button id="modeTimed" class="btn btn-success" onclick="location.href = 'timed.html';" style="visibility: hidden;">
+				<button id="modeTimed" class="btn btn-info" onclick="location.href = 'timed.html';" style="visibility: hidden;">
 					&nbsp;&nbsp;&nbsp;Ninja&nbsp;&nbsp;&nbsp;
 				</button>
 			</div>
@@ -64,7 +100,7 @@
 				<div class="col-lg-6">
 					<h4>What?</h4>
 					<p>
-						This is a simple game built using html5 and js for a college Web Tech Project. This helps to improve your vocabulary and improve typing speed.
+						This is a simple game built using HTML5 and JavaScript for a college Web Tech Project. This helps to improve your vocabulary and improve typing speed.
 					</p>
 
 					<h4>Why?</h4>
@@ -95,6 +131,27 @@
 					</p>
 				</div>
 			</div>
+
+			<div style="text-align: center;">
+			<h4>High Scores</h4>
+				
+				<table border="1" style="margin-left: 20%; width: 60%;" style="text-align: center;">
+					<?php
+					$link = mysqli_connect("localhost", "root", '', "highscore");
+					if (mysqli_errno($link)){
+						exit("-2");
+					}
+					$sql = "SELECT * FROM scores";
+					$result = mysqli_query( $link, $sql);
+					echo "<tr><th>Name</th><th>Score</th><th>Game Type</th></tr>";
+					while ($row = mysqli_fetch_array($result)){
+						echo "<tr><td>".$row["name"]."</td><td>".$row["score"]."</td><td>".$row["game_type"]."</td></tr>";
+					}
+					?>
+
+				</table>
+			</div>
+
 			<div class="footer">
 				<p>
 					&copy; WTP 2014

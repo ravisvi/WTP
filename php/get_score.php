@@ -1,4 +1,4 @@
-<?PHP 
+<?php 
  $link = @mysql_connect("localhost", "root", ""); 
  if (mysql_errno()){ 
  	exit("-2"); 
