@@ -15,7 +15,7 @@
 	echo "<html>
 	<style>body {background: url(\"../img/gameover.jpg\"); background-size: 100% 100%;}</style>
 		<body>
-			<div style='padding: 2%; border-radius: 10%; background: #EEEEEE; opacity: 0.6; text-align: center; position : absolute; top: 10%; font-size: 150%; height: 20%; width: 20%; left: 10%;'>
+			<div style='padding: 2%; border-radius: 10%; background: #EEEEEE; opacity: 0.6; text-align: center; position : absolute; top: 30%; font-size: 150%; height: 20%; width: 20%; left: 35%;'>
 				<strong>Nice Game!</strong> <br />Your score is " . $score . ". <br />
 				<a href='\WTP\index.php'>View them here or Play Again!</a>
 			</div>

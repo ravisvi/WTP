@@ -24,45 +24,12 @@
 				document.getElementById("modeTimed").style.visibility = "visible";
 			}
 
-			function openModal(mode) {
-				//alert(mode);
-				$('#myModal').on('show', function() {
-					$('iframe').attr("src", mode);
-					alert("changed");
-				});
-				$('#myModal').modal({
-					show : true
-				})
-			}
 		</script>
 	</head>
 
 	<body>
 
-		<div id="myModal" class="modal hide fade" tabindex="-1">
-			<div class='modal-dialog' style="width: 90%;">
-				<div class='modal-content'>
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">
-							Close ×
-						</button>
-						<h3>Dialog</h3>
-					</div>
-					<div class="modal-body">
-						<p>
-							This is Modal!
-						</p>
-						<hr />
-						<iframe frameborder="0" src=""></iframe>
-					</div>
-					<div class="modal-footer">
-						<button class="btn" data-dismiss="modal">
-							OK
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<div class="container" style="width: 80%;">
 			<div class="header">
 				<ul class="nav nav-pills pull-right">
@@ -74,6 +41,9 @@
 					</li>
 					<li>
 						<a href="contact.html">Contact</a>
+					</li>
+					<li>
+						<a href="highscores.php">High Scores</a>
 					</li>
 				</ul>
 				<h3 class="text-muted">WTP for Typing Party</h3>
@@ -130,26 +100,6 @@
 						This project is a 'just for fun' creation, if you have any feedback to provide please do so, by dropping a mail to <a style="color:green; text-decoration:none;">ravitejasvi@gmail.com</a> or <a style="color: #3b79d6; text-decoration: none;">narendranathjoshi@gmail.com</a>.
 					</p>
 				</div>
-			</div>
-
-			<div style="text-align: center;">
-			<h4>High Scores</h4>
-				
-				<table border="1" style="margin-left: 20%; width: 60%; margin-bottom: 3%;" style="text-align: center;">
-					<?php
-					$link = mysqli_connect("localhost", "root", '', "highscore");
-					if (mysqli_errno($link)){
-						exit("-2");
-					}
-					$sql = "SELECT * FROM scores";
-					$result = mysqli_query( $link, $sql);
-					echo "<tr><th>Name</th><th>Score</th><th>Game Type</th></tr>";
-					while ($row = mysqli_fetch_array($result)){
-						echo "<tr><td>".$row["name"]."</td><td>".$row["score"]."</td><td>".$row["game_type"]."</td></tr>";
-					}
-					?>
-
-				</table>
 			</div>
 
 			<div class="footer">
