@@ -135,7 +135,7 @@
 			<div style="text-align: center;">
 			<h4>High Scores</h4>
 				
-				<table border="1" style="margin-left: 20%; width: 60%;" style="text-align: center;">
+				<table border="1" style="margin-left: 20%; width: 60%; margin-bottom: 3%;" style="text-align: center;">
 					<?php
 					$link = mysqli_connect("localhost", "root", '', "highscore");
 					if (mysqli_errno($link)){
