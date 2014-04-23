@@ -60,7 +60,7 @@
 					if (mysqli_errno($link)){
 						exit("-2");
 					}
-					$sql = "SELECT * FROM scores";
+					$sql = "SELECT * FROM scores ORDER BY score DESC";
 					$result = mysqli_query( $link, $sql);
 					//border="1" style="margin-left: 20%; width: 60%; margin-bottom: 3%;" style="text-align: center;">
 					//echo "<table class="table table-striped">"
