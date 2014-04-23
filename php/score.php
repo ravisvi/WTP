@@ -1,22 +1,25 @@
 <?php 
- $name = $_GET['Name']; 
- $score = $_GET['Score'];
- $date = $_GET['Date_'];
- $game_type = $_GET['Game_Type']; 
+ $name = $_GET['name']; 
+ $score = $_GET['scoref'];
+ $date = $_GET['date'];
+ $game_type = $_GET['game_type']; 
  
- 	$link = @mysql_connect("localhost", "root", ""); 
- 	if (mysql_errno()){ 
+ 	$link = mysqli_connect("localhost", "root", '', "highscore"); 
+ 	if (mysqli_errno($link)){ 
  		exit("-2"); 
- 	} 
- 	mysql_select_db('wtp', $link); 
- 	if (mysql_errno()){ 
- 		exit("-3"); 
- 	} 
- 	$sql = "INSERT INTO highscores(Name, Score, Date_, Game_Type) VALUES('$name', $score, '$date', '$game_type')"; 
- 	$result = mysql_query($sql, $link); 
- 	if (mysql_errno()){ 
- 		exit("-4"); 
  	}
+	
+ 	$sql = "INSERT INTO scores (name, score, date_, game_type) VALUES('$name', $score, '$date', '$game_type')"; 
+ 	$result = mysqli_query($link, $sql);
 
- exit("1"); 
+	echo "<html>
+	<style>body {background: url(\"../img/gameover.jpg\"); background-size: 100% 100%;}</style>
+		<body>
+			<div style='padding: 2%; border-radius: 10%; background: #EEEEEE; opacity: 0.6; text-align: center; position : absolute; top: 10%; font-size: 150%; height: 20%; width: 20%; left: 10%;'>
+				<strong>Nice Game!</strong> <br />Your score is " . $score . ". <br />
+				<a href='\WTP\index.php'>View them here or Play Again!</a>
+			</div>
+		</body>
+	</html>
+					"
 ?> 

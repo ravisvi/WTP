@@ -55,6 +55,9 @@ function finishWord(curWord) {
 	}, true);
 }
 
+var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Times New Roman", "Futura");
+var color = new Array("lightred", "black", "red", "lightblue", "blue", "#000033", "#000066", "#000099", "#0000CC", "#0000FF", "#003300", "#003333", "#003366", "#003399", "#0033CC", "#0033FF", "#006600", "#006633", "#006666", "#006699", "#0066CC", "#0066FF", "#009900", "#009933", "#009966", "#009999", "#0099CC", "#0099FF", "#00CC00", "#00CC33", "#00CC66", "#00CC99", "#00CCCC", "#00CCFF", "#00FF00", "#00FF33", "#00FF66", "#00FF99", "#00FFCC", "#00FFFF", "#330000", "#330033", "#330066", "#330099", "#3300CC", "#3300FF", "#333300", "#333333", "#333366", "#333399", "#3333CC");
+
 function startWord() {
 	var thisWord = select_word();
 	var text = new createjs.Text(thisWord, (175 + (Math.random() * 150)) + "% Helvetica", "black");
@@ -75,7 +78,14 @@ function startWord() {
 
 /* version 2 */
 
+var isGameOver = false;
+
+var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Times New Roman", "Futura");
+var color = new Array("lightred", "black", "red", "lightblue", "blue", "#000033", "#000066", "#000099", "#0000CC", "#0000FF", "#003300", "#003333", "#003366", "#003399", "#0033CC", "#0033FF", "#006600", "#006633", "#006666", "#006699", "#0066CC", "#0066FF", "#009900", "#009933", "#009966", "#009999", "#0099CC", "#0099FF", "#00CC00", "#00CC33", "#00CC66", "#00CC99", "#00CCCC", "#00CCFF", "#00FF00", "#00FF33", "#00FF66", "#00FF99", "#00FFCC", "#00FFFF", "#330000", "#330033", "#330066", "#330099", "#3300CC", "#3300FF", "#333300", "#333333", "#333366", "#333399", "#3333CC");
+
 function startMany() {
+
+	isGameOver = false;
 	window.addEventListener("keydown", function() {
 		handleType();
 	}, true);
@@ -85,8 +95,6 @@ function startMany() {
 	var cur_list;
 	var readonly_cur_list;
 	var t;
-	var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Rage Italic", "Times New Roman", "Futura");
-	var color = new Array("lightred", "black", "red", "lightblue", "blue");
 
 	init();
 
@@ -102,7 +110,7 @@ function startMany() {
 			var thisWord = select_word();
 			cur_list[i] = thisWord;
 			readonly_cur_list[i] = thisWord;
-			document.getElementById("game").innerHTML += "<p id='" + thisWord + "' style='position: absolute; font-family: " + fonts[Math.floor(Math.random() * 8)] + ";font-size: " + (Math.random() * 75 + 100) + "% ;top: " + (10 + (Math.random() * 80)) + "%; left: " + (10 + (Math.random() * 80)) + "%;'>" + thisWord + "</p>";
+			document.getElementById("game").innerHTML += "<p id='" + thisWord + "' style='position: absolute; color: " + color[Math.floor(Math.random() * color.length)] + "; font-family: " + fonts[Math.floor(Math.random() * 7)] + ";font-size: " + (Math.random() * 75 + 100) + "% ;top: " + (10 + (Math.random() * 80)) + "%; left: " + (10 + (Math.random() * 80)) + "%;'>" + thisWord + "</p>";
 		};
 	}
 
@@ -139,13 +147,22 @@ function startMany() {
 		if (mistake >= 5) {
 			clearInterval(t);
 			document.getElementById("score").innerHTML = "Game Over. Score : " + score;
+			isGameOver = true;
 			document.getElementById("game").innerHTML = "";
+			var yyyy = new Date().getFullYear().toString();                                    
+			var mm = (new Date().getMonth()+1).toString(); // getMonth() is zero-based         
+			var dd  = new Date().getDate().toString();
+			document.getElementById("scoref").value = score;
+			document.getElementById("date").value = dd + '/' + mm + '/' + yyyy;
+			document.getElementById("gt").value = "Assassin";
+			document.getElementById("scoreForm").submit();
 		}
 	}
 
 }
 
-function startOne() {
+function startOne(name) {
+	isGameOver = false;
 	window.addEventListener("keydown", function() {
 		handleType();
 	}, true);
@@ -155,7 +172,6 @@ function startOne() {
 	var readonly_cur_word;
 	var t;
 	var thisWord;
-	var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Rage Italic", "Times New Roman", "Futura");
 
 	function init() {
 		t = setInterval(function() {
@@ -164,7 +180,7 @@ function startOne() {
 
 		thisWord = select_word();
 		readonly_cur_word = thisWord;
-		document.getElementById("game").innerHTML += "<p id='" + thisWord + "' style='position: absolute; font-family: " + fonts[Math.floor(Math.random() * 8)] + ";font-size: " + (Math.random() * 75 + 100) + "% ;top: " + (10 + (Math.random() * 80)) + "%; left: " + (10 + (Math.random() * 80)) + "%;'>" + thisWord + "</p>";
+		document.getElementById("game").innerHTML += "<p id='" + thisWord + "' style='position: absolute; color: " + color[Math.floor(Math.random() * color.length)] + "; font-family: " + fonts[Math.floor(Math.random() * 8)] + ";font-size: " + (Math.random() * 75 + 100) + "% ;top: " + (10 + (Math.random() * 80)) + "%; left: " + (10 + (Math.random() * 80)) + "%;'>" + thisWord + "</p>";
 	};
 
 	init();
@@ -195,13 +211,22 @@ function startOne() {
 		if (mistake >= 5) {
 			clearInterval(t);
 			document.getElementById("score").innerHTML = "Game Over. Score : " + score;
+			isGameOver = true;
 			document.getElementById("game").innerHTML = "";
+			var yyyy = new Date().getFullYear().toString();                                    
+			var mm = (new Date().getMonth()+1).toString(); // getMonth() is zero-based         
+			var dd  = new Date().getDate().toString();
+			document.getElementById("scoref").value = score;
+			document.getElementById("date").value = dd + '/' + mm + '/' + yyyy;
+			document.getElementById("gt").value = "Zen";
+			document.getElementById("scoreForm").submit();
 		}
 	}
 
 }
 
 function startTimed() {
+	isGameOver = true;
 	var flag = false;
 	window.addEventListener("keydown", function() {
 		handleType();
@@ -211,11 +236,13 @@ function startTimed() {
 	var readonly_cur_list;
 	var t;
 	var score = 0;
-	var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Rage Italic", "Times New Roman", "Futura");
+	var mistake = 0;
 
-	document.getElementById("timerval").innerHTML = 120;
+	document.getElementById("timerval").innerHTML = 30;
 	t = setInterval(function() {
-		document.getElementById("timerval").innerHTML = parseInt(document.getElementById("timerval").innerHTML) - 1;
+		if (parseInt(document.getElementById("timerval").innerHTML) > 0) {
+			document.getElementById("timerval").innerHTML = parseInt(document.getElementById("timerval").innerHTML) - 1;
+		}
 	}, 1000);
 
 	function init() {
@@ -226,18 +253,26 @@ function startTimed() {
 			var thisWord = select_word();
 			cur_list[i] = thisWord;
 			readonly_cur_list[i] = thisWord;
-			document.getElementById("game").innerHTML += "<p id='" + thisWord + "' style='position: absolute; font-family: " + fonts[Math.floor(Math.random() * 8)] + ";font-size: " + (Math.random() * 75 + 100) + "% ;top: " + (10 + (Math.random() * 80)) + "%; left: " + (10 + (Math.random() * 80)) + "%;'>" + thisWord + "</p>";
+			document.getElementById("game").innerHTML += "<p id='" + thisWord + "' style='position: absolute; color: " + color[Math.floor(Math.random() * color.length)] + "; font-family: " + fonts[Math.floor(Math.random() * 8)] + ";font-size: " + (Math.random() * 75 + 100) + "% ;top: " + (10 + (Math.random() * 80)) + "%; left: " + (10 + (Math.random() * 80)) + "%;'>" + thisWord + "</p>";
 		};
 	}
 
+	init();
+
 	function handleType() {
 		var letter = String.fromCharCode(event.keyCode + 32);
+		var mistakeFlag = false;
 		for (var i = 0; i < cur_list.length; i++) {
 			if (letter == cur_list[i].charAt(0)) {
 				cur_list[i] = cur_list[i].substr(1);
 				document.getElementById(readonly_cur_list[i]).innerHTML = cur_list[i];
+				mistakeFlag = true;
 			}
 		};
+		if (mistakeFlag == false) {
+			mistake += 1;
+			console.log("mistake");
+		}
 
 		var complete = true;
 		for (var i = 0; i < cur_list.length; i++) {
@@ -260,7 +295,19 @@ function startTimed() {
 				flag = true;
 			}
 		}
-	}
 
-	init();
+		if (mistake >= 5) {
+			clearInterval(t);
+			document.getElementById("score").innerHTML = "Game Over. Score : " + score;
+			isGameOver = true;
+			document.getElementById("game").innerHTML = "";
+			var yyyy = new Date().getFullYear().toString();                                    
+			var mm = (new Date().getMonth()+1).toString(); // getMonth() is zero-based         
+			var dd  = new Date().getDate().toString();
+			document.getElementById("scoref").value = score;
+			document.getElementById("date").value = dd + '/' + mm + '/' + yyyy;
+			document.getElementById("gt").value = "Ninja";
+			document.getElementById("scoreForm").submit();
+		}
+	}
 }

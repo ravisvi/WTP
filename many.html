@@ -4,22 +4,39 @@
 		<title>Assassin</title>
 		<script type="text/javascript" src="js/snd.js"></script>
 		<script type="text/javascript" src="js/core.js"></script>
-		
+		<link rel="stylesheet" href="css/layout.css" charset="UTF-8"/>
+		<link rel="stylesheet" href="lib/bootstrap.css" charset="UTF-8"/>
 	</head>
 
 	<body>
-		<div id="timer" style="background: #aabbcc;">
-			Timer : <a id="timerval">0</a>
-		</div>
-		<div id="score" style="background: #bbbbbb;">
-			Score :
-		</div>
-		<div id="game" style="position: absolute; width: 80%; height: 80%; background: #999999;">
-
+		<div id="playContent">
+			<div>
+				<p class="h2">
+					Zen
+				</p>
+				<p class="lead">
+					Timer : <a id="timerval">0</a>	
+					<a id="score" style="color: black;"> Score : </a>
+				</p>
+				<span id="nameForm">
+				<form id="scoreForm" action="php/score.php" method="GET">
+				<input type="text" name="name" class="input-medium" placeholder="They call you?"/>
+				<input type="text" name="scoref" id="scoref" style="visibility: hidden;"/>
+				<input type="text" name="date" id="date" style="visibility: hidden;"/>
+				<input type="text" name="game_type" id="gt" style="visibility: hidden;"/>
+				<input type="button" class="btn btn-info" onclick="startGame();" value="Let's Roll!">
+				</form>				
+				</span>
+			</div>
+			<hr />
+			<div id="game"></div>
 		</div>
 	</body>
 	
 	<script type="text/javascript">
+	function startGame() {
+			document.getElementById("nameForm").style.visibility = "hidden";
 			startMany();
+		}			
 		</script>
 </html>
