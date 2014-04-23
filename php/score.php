@@ -3,7 +3,7 @@
  $score = $_GET['Score'];
  $date = $_GET['Date_'];
  $game_type = $_GET['Game_Type']; 
- function post_scores(){
+ 
  	$link = @mysql_connect("localhost", "root", ""); 
  	if (mysql_errno()){ 
  		exit("-2"); 
@@ -17,6 +17,6 @@
  	if (mysql_errno()){ 
  		exit("-4"); 
  	}
- } 
+
  exit("1"); 
 ?> 
