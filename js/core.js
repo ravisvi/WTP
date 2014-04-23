@@ -86,6 +86,7 @@ function startMany() {
 	var readonly_cur_list;
 	var t;
 	var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Rage Italic", "Times New Roman", "Futura");
+	var color = new Array("lightred", "black", "red", "lightblue", "blue");
 
 	init();
 
@@ -212,7 +213,7 @@ function startTimed() {
 	var score = 0;
 	var fonts = new Array("Helvetica", "Book Antiqua", "Arial Black", "Comic Sans MS", "Copperplate Gothic Light", "Rage Italic", "Times New Roman", "Futura");
 
-	document.getElementById("timerval").innerHTML = 10;
+	document.getElementById("timerval").innerHTML = 120;
 	t = setInterval(function() {
 		document.getElementById("timerval").innerHTML = parseInt(document.getElementById("timerval").innerHTML) - 1;
 	}, 1000);
